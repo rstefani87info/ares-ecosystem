@@ -1,0 +1,37 @@
+{  
+  "name": "@ares/ecosystem-microservices-geo",  
+  "version": "1.0.0",  
+  "description": "",  
+  "main": "index.js",  
+  "scripts": {  
+    "test": "echo \"Error: no test specified\" && exit 1"  
+  },  
+  "author": "Roberto Stefani",  
+  "license": "MIT",  
+  "repository": { 
+      "type": "git", 
+      "url": "git+https://github.com/rstefani87info/ares-ecosystem-microservices-geo.git" 
+  }, 
+  "bugs": { 
+    "url": "https://github.com/rstefani87info/ares-ecosystem-microservices-geo.git/issues" 
+  }, 
+  "homepage": "https://github.com/rstefani87info/ares-ecosystem-microservices-geo.git#readme",
+  "dependencies": {
+    "@ares/datasource-files": "github:rstefani87info/ares-datasource-files#master",
+    "@ares/datasource-mysql": "github:rstefani87info/ares-datasource-mysql#master",
+    "@ares/prototype-files": "github:rstefani87info/ares-prototype-files#master",
+    "@ares/google": "github:rstefani87info/ares-google#master",
+    "@ares/web": "github:rstefani87info/ares-web#master",
+    "@paypal/checkout-server-sdk": "^1.0.3",
+    "body-parser": "^1.20.2",
+    "express": "^4.18.3",
+    "express-session": "^1.18.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql": "^2.18.1",
+    "nanoid": "^5.0.7",
+    "whois": "^2.14.0"
+  },
+  "devDependencies": {
+    "@ares/core-dev": "github:rstefani87info/ares-core-dev#master"
+  }
+} 
