@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geo Microservice API Documentation - compare-addresses</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        details {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        summary {
+            padding: 15px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+        }
+        summary:hover {
+            background-color: #e9ecef;
+        }
+        .endpoint-content {
+            padding: 15px;
+        }
+        .method {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .post {
+            background-color: #4CAF50;
+        }
+        .get {
+            background-color: #2196F3;
+        }
+        .put {
+            background-color: #FF9800;
+        }
+        .delete {
+            background-color: #f44336;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    var url = 'http://localhost:3333/';
+</script>
+</head>
+<body>
+    <h1>Geo Microservice API Documentation</h1>
+    
+    <details>
+        <summary><span class="method post">POST</span> /compare-addresses</summary>
+        <div class="endpoint-content">
+            <h3>Description</h3>
+            <p>Compares two address objects and identifies differences between them. For street names, it uses AI-powered comparison to determine if differently formatted street names actually refer to the same street.</p>
+            
+            <h3>Request</h3>
+            <h4>Body Parameters</h4>
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Type</th>
+                    <th>Required</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>address1</td>
+                    <td>Object</td>
+                    <td>Yes</td>
+                    <td>First address object to compare</td>
+                </tr>
+                <tr>
+                    <td>address2</td>
+                    <td>Object</td>
+                    <td>Yes</td>
+                    <td>Second address object to compare</td>
+                </tr>
+            </table>
+            
+            <h4>Address Object Structure</h4>
+            <table>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Required</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>administrative_region</td>
+                    <td>String</td>
+                    <td>Yes</td>
+                    <td>Administrative region (e.g., region)</td>
+                </tr>
+                <tr>
+                    <td>administrative_area</td>
+                    <td>String</td>
+                    <td>Yes</td>
+                    <td>Administrative area (e.g., province)</td>
+                </tr>
+                <tr>
+                    <td>city</td>
+                    <td>String</td>
+                    <td>Yes</td>
+                    <td>City name</td>
+                </tr>
+                <tr>
+                    <td>postal_code</td>
+                    <td>String</td>
+                    <td>Yes</td>
+                    <td>Postal code</td>
+                </tr>
+                <tr>
+                    <td>street</td>
+                    <td>String</td>
+                    <td>Yes</td>
+                    <td>Street name (uses AI comparison)</td>
+                </tr>
+                <tr>
+                    <td>street_number</td>
+                    <td>String</td>
+                    <td>Yes</td>
+                    <td>Street number</td>
+                </tr>
+                <tr>
+                    <td>internal_details</td>
+                    <td>String</td>
+                    <td>Yes</td>
+                    <td>Internal details (apartment, floor, etc.)</td>
+                </tr>
+            </table>
+            
+            <h4>Example Request</h4>
+            <pre><code id="params">{
+  "address1": {
+    "administrative_region": "Lombardia",
+    "administrative_area": "Milano",
+    "city": "Milano",
+    "postal_code": "20100",
+    "street": "Via Roma",
+    "street_number": "10",
+    "internal_details": "Interno 5"
+  },
+  "address2": {
+    "administrative_region": "Lombardia",
+    "administrative_area": "Milano",
+    "city": "Milano",
+    "postal_code": "20100",
+    "street": "v. Roma",
+    "street_number": "10",
+    "internal_details": "Int 5"
+  }
+}</code></pre>
+            
+            <h3>Response</h3>
+            <h4>Success Response (200 OK)</h4>
+            <pre><code id="result"></code><script>
+$.ajax({
+    url: url+'ares/geo/compare-addresses',
+    type: 'POST',
+    contentType: 'application/json',
+    data:  $('#params').text(),
+    dataType: 'json',
+    success: function(response) {
+        console.log('Response:', response);
+        $('#result').text(JSON.stringify(response, null, 2));
+    },
+    error: function(xhr, status, error) {
+        console.error('Error:', error);
+        $('#result').text('Error: ' + error);
+    }
+});
+            </script></pre>
+            
+            <h4>Error Response (400 Bad Request)</h4>
+            <pre><code>{
+  "error": "Missing required field: street"
+}</code></pre>
+            
+            <h4>Response Fields</h4>
+            <table>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>matches</td>
+                    <td>Boolean</td>
+                    <td>True if addresses match completely, false otherwise</td>
+                </tr>
+                <tr>
+                    <td>matchPercentage</td>
+                    <td>Number</td>
+                    <td>Percentage of fields that match (0-100)</td>
+                </tr>
+                <tr>
+                    <td>differences</td>
+                    <td>Object</td>
+                    <td>Object containing fields that differ between addresses</td>
+                </tr>
+            </table>
+        </div>
+    </details>
+</body>
+</html>
