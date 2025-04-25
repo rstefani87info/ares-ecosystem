@@ -10,29 +10,29 @@ import * as jwt from "@ares/web/jwt.js";
 import app from "./app.js";
 import { compareAddresses } from "./address.js";
 
-const aReS = await aReSWebInit(3333, []);
+const aReS = await aReSWebInit(3332, []);
 
-aReS.validateJWT = async (req, res) => {
-  return await jwt.validateJWT(req, res, async (notValidCallback) => {
-    console.log("token", req.token);
-    const res = await aReS.datasourceMap[
-      "aresgoogle"
-    ].getUserInfo.execute(req);
-    console.log("__ userInfo", res.results.data);
-    if (res?.results?.data && res.results.data.length >= 0) {
-      req.session.userInfo = res.results.data[0];
-      return true;
-    } else if (res?.results && res?.results["€rror"]) {
-      if (notValidCallback && typeof notValidCallback === "function")
-        notValidCallback(res.results["€rror"]);
-      return false;
-    } else {
-      if (notValidCallback && typeof notValidCallback === "function")
-        notValidCallback("cannot find google user info");
-      return false;
-    }
-  });
-};
+// aReS.validateJWT = async (req, res) => {
+//   return await jwt.validateJWT(req, res, async (notValidCallback) => {
+//     console.log("token", req.token);
+//     const res = await aReS.datasourceMap[
+//       "aresgoogle"
+//     ].getUserInfo.execute(req);
+//     console.log("__ userInfo", res.results.data);
+//     if (res?.results?.data && res.results.data.length >= 0) {
+//       req.session.userInfo = res.results.data[0];
+//       return true;
+//     } else if (res?.results && res?.results["€rror"]) {
+//       if (notValidCallback && typeof notValidCallback === "function")
+//         notValidCallback(res.results["€rror"]);
+//       return false;
+//     } else {
+//       if (notValidCallback && typeof notValidCallback === "function")
+//         notValidCallback("cannot find google user info");
+//       return false;
+//     }
+//   });
+// };
 
 const dsRoot = fileUtilities.getAbsolutePath(app.datasourcesRoot);
 console.log("datasource root: ", dsRoot);

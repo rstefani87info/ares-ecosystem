@@ -2,7 +2,7 @@ import { dataDescriptors } from '@ares/core/dataDescriptors.js';
 
 const mapper = {
     name: "getExpressionById",
-    path: "/ares/i18n/expressions/:id",
+    path: "/ares/i18n/expressions/details/:id",
     transaction: false,
     methods: "get",
     connectionSetting: 'mysql_ares_geo',

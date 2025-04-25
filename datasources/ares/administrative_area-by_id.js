@@ -2,7 +2,7 @@ import { dataDescriptors } from '@ares/core/dataDescriptors.js';
 
 const mapper = {
     name: "getAdministrativeAreaById",
-    path: "/ares/geo/administrative-areas/:id",
+    path: "/ares/geo/administrative-areas/details/:id",
     transaction: false,
     methods: "get",
     connectionSetting: 'mysql_ares_geo',

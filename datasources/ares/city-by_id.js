@@ -1,8 +1,8 @@
 import { dataDescriptors } from '@ares/core/dataDescriptors.js';
 
 const mapper = {
-    name: "getNationById",
-    path: "/ares/geo/nations/details/:id",
+    name: "getCityById",
+    path: "/ares/geo/cities/details/:id",
     transaction: false,
     methods: "get",
     connectionSetting: 'mysql_ares_geo',
