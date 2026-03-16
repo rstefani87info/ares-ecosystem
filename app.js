@@ -3,6 +3,7 @@ import * as crypto from '@ares/core/crypto.js';
 import { nanoid } from "nanoid";
 
 const app = {
+  webServerPort: 3009,
   name : "aReS-REST-API",
   viewName : "aReS REST API",
   datasourcesRoot : "datasources",

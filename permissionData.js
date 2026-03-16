@@ -9,8 +9,8 @@ const permissionData = [
 			"*"
 		],
 		"allowedResource": [
-			"place4party",
-			"/place4party/payment-mode/get/list"
+			"/ares",
+			"/ares/geo/nations/list"
 		],
 		"methods": [],
 		"allowOnlyForUserId": []
