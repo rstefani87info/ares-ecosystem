@@ -23,7 +23,7 @@ export function compareAddresses(address1, address2) {
   }
 
   for (const field of requiredFields) {
-    if (!address1.hasOwnProperty(field) || !address2.hasOwnProperty(field)) {
+    if (!Object.hasOwn(address1, field) || !Object.hasOwn(address2, field)) {
       throw new Error(`Missing required field: ${field}`);
     }
   }

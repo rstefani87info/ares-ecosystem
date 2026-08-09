@@ -25,7 +25,6 @@ const abbreviationMap = {
   "santa maria domo": "s. m. domo",
   "santa maria domina": "s. m. domina",
   "santa maria domini": "s. m. domini",
-  "santa maria domini": "s. m. domini",
   santissimo: "ss.mo",
   santissima: "ss.ma",
   largo: "l.",
@@ -516,4 +515,3 @@ if (typeof require !== 'undefined' && require.main === module) {
     console.log("Usage: node it-street-address-ai.js \"Via Roma, 1\" \"v. Roma 1\"");
   }
 }
-

@@ -1,5 +1,6 @@
 -- Ricerca città per nome
-SELECT * FROM (
+SELECT COUNT(*) as count
+FROM (
 SELECT 
     c.id,
     ce.eng_expression as eng_name,
@@ -97,4 +98,4 @@ FROM geo_cities c
 LEFT JOIN i18n_expression_meanings cem ON cem.meaning_id = c.name_id
 LEFT JOIN i18n_expressions ce ON ce.id = cem.expression_id
 WHERE c.postal_codes IS NOT NULL AND c.postal_codes LIKE ?
-) AS A ORDER BY A.${0}_name
+) as A;

@@ -5,6 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "lint": "eslint .",
+    "start": "node --preserve-symlinks index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Roberto Stefani",
@@ -18,8 +20,10 @@
   },
   "homepage": "https://github.com/rstefani87info/ares-ecosystem-microservices-geo.git#readme",
   "dependencies": {
+    "@ares/core": "workspace:^",
     "@ares/datasource-files": "workspace:^",
     "@ares/datasource-mysql": "workspace:^",
+    "@ares/files": "workspace:^",
     "@ares/google": "workspace:^",
     "@ares/prototype-files": "workspace:^",
     "@ares/web": "workspace:^",
@@ -35,6 +39,9 @@
     "whois": "^2.14.0"
   },
   "devDependencies": {
-    "@ares/core-dev": "workspace:^"
+    "@ares/core-dev": "workspace:^",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.7.0",
+    "globals": "^17.7.0"
   }
 }

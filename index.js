@@ -2,13 +2,22 @@
  * @author Roberto Stefani
  * @license MIT
  */
+import inspector from "node:inspector";
 // import { asyncConsole } from "@ares/core/console.js";
 import aReSInitialize from "@ares/core";
 import * as aReSWeb from "@ares/web/server.js";
 import * as fileUtilities from "@ares/files";
-import { initAllDatasources } from "@ares/datasource-files";
-import app from "./app.js";
+import {
+  enableDatasourceHotReload,
+  initAllDatasources,
+} from "@ares/datasource-files";
 import { compareAddresses } from "./address.js";
+import app from "./app.js";
+
+if (app.environment !== "production") {
+  inspector.open(undefined, undefined, true);
+  console.log("Debugger attached");
+}
 
 const dsRoot = fileUtilities.getAbsolutePath(app.datasourcesRoot);
 console.log("datasource root: ", dsRoot);
@@ -19,6 +28,10 @@ aReS
   .include(aReSWeb)
   .then(() => {
     init(aReS);
+    enableDatasourceHotReload(aReS, app.webDatasources, { datasourcesRoot: dsRoot });
+    aReS.isResourceAllowed = () => {
+      return true;
+    };
   })
   .catch((error) => {
     console.error(`Error initializing aReS-web: ${error.message}`);

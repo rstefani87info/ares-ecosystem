@@ -3,7 +3,7 @@ import {PropertyPointer} from '@ares/core/scripts.js';
 const cryptoMap = {};
 const valuesMap = {};
 export function transformModelFieldToSHA256(data, ...fieldNames) {
-    array.forEach(element => {
+    fieldNames.forEach(element => {
         if(typeof element === 'string') {
             if(data[element]) {
                 data[element] = rememberHash(data[element]);
@@ -18,7 +18,7 @@ export function transformModelFieldToSHA256(data, ...fieldNames) {
 }
 
 export function resumeModelFieldFromSHA256(data, ...fieldNames) {
-    array.forEach(element => {
+    fieldNames.forEach(element => {
         if(typeof element === 'string') {
             if(data[element]) {
                 data[element] = resumeFromHash(data[element]);
