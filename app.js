@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 
 const app = {
   webServerPort: 3009,
+  webSocketPort: 3010,
   name : "aReS-REST-API",
   viewName : "aReS REST API",
   datasourcesRoot : "datasources",
@@ -13,6 +14,15 @@ const app = {
   ],
   environment: "test",
   minUserAge:0,
+  mcp: {
+    autoStart: true,
+    transport: {
+      type: "http",
+      port: 3398,
+      path: "/mcp",
+      stateful: true,
+    },
+  },
   session: {
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 30,

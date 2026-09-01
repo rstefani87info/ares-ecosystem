@@ -6,6 +6,8 @@ import inspector from "node:inspector";
 // import { asyncConsole } from "@ares/core/console.js";
 import aReSInitialize from "@ares/core";
 import * as aReSWeb from "@ares/web/server.js";
+import * as aReSWebSocket from "@ares/web-socket";
+import * as aReSMcp from "@ares/mcp/server.js";
 import * as fileUtilities from "@ares/files";
 import {
   enableDatasourceHotReload,
@@ -13,6 +15,11 @@ import {
 } from "@ares/datasource-files";
 import { compareAddresses } from "./address.js";
 import app from "./app.js";
+import {
+  handleCoreUtilityWebSocketMessage,
+  registerCoreUtilityHttpRoutes,
+  registerCoreUtilityMcpTools,
+} from "./core-utilities-server.js";
 
 if (app.environment !== "production") {
   inspector.open(undefined, undefined, true);
@@ -22,22 +29,35 @@ if (app.environment !== "production") {
 const dsRoot = fileUtilities.getAbsolutePath(app.datasourcesRoot);
 console.log("datasource root: ", dsRoot);
 app.webDatasources = await initAllDatasources(dsRoot);
+app.webSocketLogin = ({ username }) => ({ username: username ?? "anonymous" });
+app.webSocketUnderstandMessage = handleCoreUtilityWebSocketMessage;
 
 const aReS = aReSInitialize(app);
 aReS
   .include(aReSWeb)
-  .then(() => {
+  .then(async () => {
+    const originalWebServerPort = aReS.appSetup.webServerPort;
+    aReS.appSetup.webServerPort = aReS.appSetup.webSocketPort ?? (originalWebServerPort + 1);
+    await aReS.include(aReSWebSocket);
+    aReS.appSetup.webServerPort = originalWebServerPort;
+
+    await aReS.include(aReSMcp);
+
     init(aReS);
     enableDatasourceHotReload(aReS, app.webDatasources, { datasourcesRoot: dsRoot });
     aReS.isResourceAllowed = () => {
       return true;
     };
+    await aReS.startMCPServer();
   })
   .catch((error) => {
     console.error(`Error initializing aReS-web: ${error.message}`);
   });
 
 function init(aReS) {
+  registerCoreUtilityHttpRoutes(aReS);
+  registerCoreUtilityMcpTools(aReS);
+
   // Serve the geo.html documentation at the specified endpoint
   aReS.httpServer.get("/ares/geo/doc/compare-addresses", (req, res) => {
     const lang =
