@@ -1,0 +1,451 @@
+{
+  "timestamp": 1755536400000,
+  "datasource": {
+    "name": "privacy",
+    "path": "c:\\Users\\rstef\\workspace\\rs\\aReS\\ecosystem\\datasources\\privacy",
+    "datasourceFile": "c:\\Users\\rstef\\workspace\\rs\\aReS\\ecosystem\\datasources\\privacy\\datasource.js"
+  },
+  "reverseEngineeringCapabilities": {
+    "schemas": true,
+    "entities": true,
+    "properties": true,
+    "indexes": true
+  },
+  "schemaDefinitions": [
+    {
+      "name": "ares_privacy",
+      "identifier": "ares-core-datasources-SchemaDefinition-ares_privacy",
+      "driver": {},
+      "entities": [
+        {
+          "name": "users",
+          "schemaName": "ares_privacy",
+          "identifier": "ares-core-datasources-EntityDefinition-users",
+          "driver": {},
+          "entityType": "TABLE",
+          "originalDefinedProperties": [],
+          "originalDefinedIndexes": [],
+          "isOnline": true,
+          "properties": [
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-id",
+              "driver": {},
+              "name": "id",
+              "_type": {
+                "name": "bigint",
+                "unsigned": true,
+                "length": 19
+              },
+              "ordinalPosition": 1,
+              "notNull": true,
+              "primaryKey": true,
+              "autoIncrement": true,
+              "unsigned": true,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-username",
+              "driver": {},
+              "name": "username",
+              "_type": {
+                "name": "varchar",
+                "length": 100
+              },
+              "ordinalPosition": 2,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-email",
+              "driver": {},
+              "name": "email",
+              "_type": {
+                "name": "varchar",
+                "length": 255
+              },
+              "ordinalPosition": 3,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-created_at",
+              "driver": {},
+              "name": "created_at",
+              "_type": {
+                "name": "timestamp"
+              },
+              "ordinalPosition": 4,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "current_timestamp()"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-updated_at",
+              "driver": {},
+              "name": "updated_at",
+              "_type": {
+                "name": "timestamp"
+              },
+              "ordinalPosition": 5,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "current_timestamp()",
+              "defaultValueOnUpdate": "current_timestamp()"
+            }
+          ],
+          "indexes": [
+            {
+              "type": "PRIMARY_KEY",
+              "name": "primary",
+              "originalSchema": "ares_privacy",
+              "originalEntity": "users",
+              "properties": [
+                {
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "UNIQUE",
+              "name": "uk_users_username",
+              "originalSchema": "ares_privacy",
+              "originalEntity": "users",
+              "properties": [
+                {
+                  "columnName": "username",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "UNIQUE",
+              "name": "uk_users_email",
+              "originalSchema": "ares_privacy",
+              "originalEntity": "users",
+              "properties": [
+                {
+                  "columnName": "email",
+                  "ordinalPosition": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "profiles",
+          "schemaName": "ares_privacy",
+          "identifier": "ares-core-datasources-EntityDefinition-profiles",
+          "driver": {},
+          "entityType": "TABLE",
+          "originalDefinedProperties": [],
+          "originalDefinedIndexes": [],
+          "isOnline": true,
+          "properties": [
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-id",
+              "driver": {},
+              "name": "id",
+              "_type": {
+                "name": "bigint",
+                "unsigned": true,
+                "length": 19
+              },
+              "ordinalPosition": 1,
+              "notNull": true,
+              "primaryKey": true,
+              "autoIncrement": true,
+              "unsigned": true,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-user_id",
+              "driver": {},
+              "name": "user_id",
+              "_type": {
+                "name": "bigint",
+                "unsigned": true,
+                "length": 19
+              },
+              "ordinalPosition": 2,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-profile_name",
+              "driver": {},
+              "name": "profile_name",
+              "_type": {
+                "name": "varchar",
+                "length": 100
+              },
+              "ordinalPosition": 3,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-description",
+              "driver": {},
+              "name": "description",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 4,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-created_at",
+              "driver": {},
+              "name": "created_at",
+              "_type": {
+                "name": "timestamp"
+              },
+              "ordinalPosition": 5,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "current_timestamp()"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-updated_at",
+              "driver": {},
+              "name": "updated_at",
+              "_type": {
+                "name": "timestamp"
+              },
+              "ordinalPosition": 6,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "current_timestamp()",
+              "defaultValueOnUpdate": "current_timestamp()"
+            }
+          ],
+          "indexes": [
+            {
+              "type": "PRIMARY_KEY",
+              "name": "primary",
+              "originalSchema": "ares_privacy",
+              "originalEntity": "profiles",
+              "properties": [
+                {
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "LINK",
+              "name": "fk_profiles_user",
+              "mode": "OUTGOING",
+              "originalSchema": "ares_privacy",
+              "originalEntity": "profiles",
+              "referenceSchemaName": "ares_privacy",
+              "referenceEntityName": "users",
+              "onDelete": "CASCADE",
+              "onUpdate": "CASCADE",
+              "properties": [
+                {
+                  "columnName": "user_id",
+                  "ordinalPosition": 1
+                }
+              ],
+              "references": [
+                {
+                  "schemaName": "ares_privacy",
+                  "entityName": "users",
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "idx_profiles_user_id",
+              "originalSchema": "ares_privacy",
+              "originalEntity": "profiles",
+              "properties": [
+                {
+                  "columnName": "user_id",
+                  "ordinalPosition": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "profile_data",
+          "schemaName": "ares_privacy",
+          "identifier": "ares-core-datasources-EntityDefinition-profile_data",
+          "driver": {},
+          "entityType": "TABLE",
+          "originalDefinedProperties": [],
+          "originalDefinedIndexes": [],
+          "isOnline": true,
+          "properties": [
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-id",
+              "driver": {},
+              "name": "id",
+              "_type": {
+                "name": "bigint",
+                "unsigned": true,
+                "length": 19
+              },
+              "ordinalPosition": 1,
+              "notNull": true,
+              "primaryKey": true,
+              "autoIncrement": true,
+              "unsigned": true,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-profile_id",
+              "driver": {},
+              "name": "profile_id",
+              "_type": {
+                "name": "bigint",
+                "unsigned": true,
+                "length": 19
+              },
+              "ordinalPosition": 2,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-sensible_data_name",
+              "driver": {},
+              "name": "sensible_data_name",
+              "_type": {
+                "name": "varchar",
+                "length": 255
+              },
+              "ordinalPosition": 3,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-value",
+              "driver": {},
+              "name": "value",
+              "_type": {
+                "name": "longtext",
+                "length": 4294967295
+              },
+              "ordinalPosition": 4,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-created_at",
+              "driver": {},
+              "name": "created_at",
+              "_type": {
+                "name": "timestamp"
+              },
+              "ordinalPosition": 5,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "current_timestamp()"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-updated_at",
+              "driver": {},
+              "name": "updated_at",
+              "_type": {
+                "name": "timestamp"
+              },
+              "ordinalPosition": 6,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "current_timestamp()",
+              "defaultValueOnUpdate": "current_timestamp()"
+            }
+          ],
+          "indexes": [
+            {
+              "type": "PRIMARY_KEY",
+              "name": "primary",
+              "originalSchema": "ares_privacy",
+              "originalEntity": "profile_data",
+              "properties": [
+                {
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "LINK",
+              "name": "fk_profile_data_profile",
+              "mode": "OUTGOING",
+              "originalSchema": "ares_privacy",
+              "originalEntity": "profile_data",
+              "referenceSchemaName": "ares_privacy",
+              "referenceEntityName": "profiles",
+              "onDelete": "CASCADE",
+              "onUpdate": "CASCADE",
+              "properties": [
+                {
+                  "columnName": "profile_id",
+                  "ordinalPosition": 1
+                }
+              ],
+              "references": [
+                {
+                  "schemaName": "ares_privacy",
+                  "entityName": "profiles",
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "UNIQUE",
+              "name": "uk_profile_data_profile_sensible",
+              "originalSchema": "ares_privacy",
+              "originalEntity": "profile_data",
+              "properties": [
+                {
+                  "columnName": "profile_id",
+                  "ordinalPosition": 1
+                },
+                {
+                  "columnName": "sensible_data_name",
+                  "ordinalPosition": 2
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "idx_profile_data_profile_id",
+              "originalSchema": "ares_privacy",
+              "originalEntity": "profile_data",
+              "properties": [
+                {
+                  "columnName": "profile_id",
+                  "ordinalPosition": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

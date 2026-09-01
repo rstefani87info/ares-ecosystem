@@ -1,0 +1,1620 @@
+{
+  "timestamp": 1755685200001,
+  "datasource": {
+    "name": "maintenance",
+    "path": "c:\\Users\\rstef\\workspace\\rs\\aReS\\ecosystem\\datasources\\maintenance",
+    "datasourceFile": "c:\\Users\\rstef\\workspace\\rs\\aReS\\ecosystem\\datasources\\maintenance\\datasource.js"
+  },
+  "reverseEngineeringCapabilities": {
+    "schemas": true,
+    "entities": true,
+    "properties": true,
+    "indexes": true
+  },
+  "schemaDefinitions": [
+    {
+      "name": "ares_maintenance",
+      "identifier": "ares-core-datasources-SchemaDefinition-ares_maintenance",
+      "driver": {},
+      "entities": [
+        {
+          "name": "projects",
+          "schemaName": "ares_maintenance",
+          "identifier": "ares-core-datasources-EntityDefinition-projects",
+          "driver": {},
+          "entityType": "TABLE",
+          "originalDefinedProperties": [],
+          "originalDefinedIndexes": [],
+          "isOnline": true,
+          "description": "aReS projects tracked by the maintenance datasource (formerly: applications)",
+          "properties": [
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-id",
+              "driver": {},
+              "name": "id",
+              "_type": {
+                "name": "bigint",
+                "unsigned": true,
+                "length": 19
+              },
+              "ordinalPosition": 1,
+              "notNull": true,
+              "primaryKey": true,
+              "autoIncrement": true,
+              "unsigned": true,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-name",
+              "driver": {},
+              "name": "name",
+              "_type": {
+                "name": "varchar",
+                "length": 255
+              },
+              "ordinalPosition": 2,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-version",
+              "driver": {},
+              "name": "version",
+              "_type": {
+                "name": "varchar",
+                "length": 50
+              },
+              "ordinalPosition": 3,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-type",
+              "driver": {},
+              "name": "type",
+              "_type": {
+                "name": "varchar",
+                "length": 100
+              },
+              "ordinalPosition": 4,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-root_path",
+              "driver": {},
+              "name": "root_path",
+              "_type": {
+                "name": "varchar",
+                "length": 1024
+              },
+              "ordinalPosition": 5,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-git_url",
+              "driver": {},
+              "name": "git_url",
+              "_type": {
+                "name": "varchar",
+                "length": 512
+              },
+              "ordinalPosition": 6,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-git_branch",
+              "driver": {},
+              "name": "git_branch",
+              "_type": {
+                "name": "varchar",
+                "length": 128
+              },
+              "ordinalPosition": 7,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "'main'"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-config_path",
+              "driver": {},
+              "name": "config_path",
+              "_type": {
+                "name": "varchar",
+                "length": 1024
+              },
+              "ordinalPosition": 8,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-created_at",
+              "driver": {},
+              "name": "created_at",
+              "_type": {
+                "name": "timestamp"
+              },
+              "ordinalPosition": 9,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "current_timestamp()"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-updated_at",
+              "driver": {},
+              "name": "updated_at",
+              "_type": {
+                "name": "timestamp"
+              },
+              "ordinalPosition": 10,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "current_timestamp()",
+              "defaultValueOnUpdate": "current_timestamp()"
+            }
+          ],
+          "indexes": [
+            {
+              "type": "PRIMARY_KEY",
+              "name": "primary",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "projects",
+              "properties": [
+                {
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "UNIQUE",
+              "name": "uk_projects_name",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "projects",
+              "properties": [
+                {
+                  "columnName": "name",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "idx_projects_type",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "projects",
+              "properties": [
+                {
+                  "columnName": "type",
+                  "ordinalPosition": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "tasks",
+          "schemaName": "ares_maintenance",
+          "identifier": "ares-core-datasources-EntityDefinition-tasks",
+          "driver": {},
+          "entityType": "TABLE",
+          "originalDefinedProperties": [],
+          "originalDefinedIndexes": [],
+          "isOnline": true,
+          "description": "aReS tasks tracked per project (formerly: tickets)",
+          "properties": [
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-id",
+              "driver": {},
+              "name": "id",
+              "_type": {
+                "name": "bigint",
+                "unsigned": true,
+                "length": 19
+              },
+              "ordinalPosition": 1,
+              "notNull": true,
+              "primaryKey": true,
+              "autoIncrement": true,
+              "unsigned": true,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-project_id",
+              "driver": {},
+              "name": "project_id",
+              "_type": {
+                "name": "bigint",
+                "unsigned": true,
+                "length": 19
+              },
+              "ordinalPosition": 2,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-profile_id",
+              "driver": {},
+              "name": "profile_id",
+              "_type": {
+                "name": "bigint",
+                "unsigned": true,
+                "length": 19
+              },
+              "ordinalPosition": 3,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-kind",
+              "driver": {},
+              "name": "kind",
+              "_type": {
+                "name": "varchar",
+                "length": 50
+              },
+              "ordinalPosition": 4,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "'general'"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-title",
+              "driver": {},
+              "name": "title",
+              "_type": {
+                "name": "varchar",
+                "length": 255
+              },
+              "ordinalPosition": 5,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-description",
+              "driver": {},
+              "name": "description",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 6,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-status",
+              "driver": {},
+              "name": "status",
+              "_type": {
+                "name": "varchar",
+                "length": 50
+              },
+              "ordinalPosition": 7,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "'open'"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-priority",
+              "driver": {},
+              "name": "priority",
+              "_type": {
+                "name": "varchar",
+                "length": 50
+              },
+              "ordinalPosition": 8,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "'normal'"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-external_ref",
+              "driver": {},
+              "name": "external_ref",
+              "_type": {
+                "name": "varchar",
+                "length": 255
+              },
+              "ordinalPosition": 9,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-metadata",
+              "driver": {},
+              "name": "metadata",
+              "_type": {
+                "name": "json"
+              },
+              "ordinalPosition": 10,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-created_at",
+              "driver": {},
+              "name": "created_at",
+              "_type": {
+                "name": "timestamp"
+              },
+              "ordinalPosition": 11,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "current_timestamp()"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-updated_at",
+              "driver": {},
+              "name": "updated_at",
+              "_type": {
+                "name": "timestamp"
+              },
+              "ordinalPosition": 12,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "current_timestamp()",
+              "defaultValueOnUpdate": "current_timestamp()"
+            }
+          ],
+          "indexes": [
+            {
+              "type": "PRIMARY_KEY",
+              "name": "primary",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "tasks",
+              "properties": [
+                {
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "LINK",
+              "name": "fk_tasks_project",
+              "mode": "OUTGOING",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "tasks",
+              "referenceSchemaName": "ares_maintenance",
+              "referenceEntityName": "projects",
+              "onDelete": "CASCADE",
+              "onUpdate": "CASCADE",
+              "properties": [
+                {
+                  "columnName": "project_id",
+                  "ordinalPosition": 1
+                }
+              ],
+              "references": [
+                {
+                  "schemaName": "ares_maintenance",
+                  "entityName": "projects",
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "LINK",
+              "name": "fk_tasks_profile",
+              "mode": "OUTGOING",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "tasks",
+              "referenceSchemaName": "ares_privacy",
+              "referenceEntityName": "profiles",
+              "onDelete": "RESTRICT",
+              "onUpdate": "CASCADE",
+              "properties": [
+                {
+                  "columnName": "profile_id",
+                  "ordinalPosition": 1
+                }
+              ],
+              "references": [
+                {
+                  "schemaName": "ares_privacy",
+                  "entityName": "profiles",
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "idx_tasks_project_id",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "tasks",
+              "properties": [
+                {
+                  "columnName": "project_id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "idx_tasks_profile_id",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "tasks",
+              "properties": [
+                {
+                  "columnName": "profile_id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "idx_tasks_status",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "tasks",
+              "properties": [
+                {
+                  "columnName": "status",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "idx_tasks_kind",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "tasks",
+              "properties": [
+                {
+                  "columnName": "kind",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "idx_tasks_external_ref",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "tasks",
+              "properties": [
+                {
+                  "columnName": "external_ref",
+                  "ordinalPosition": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "job_definitions",
+          "schemaName": "ares_maintenance",
+          "identifier": "ares-core-datasources-EntityDefinition-job_definitions",
+          "driver": {},
+          "entityType": "TABLE",
+          "originalDefinedProperties": [],
+          "originalDefinedIndexes": [],
+          "isOnline": true,
+          "description": "Definition/blueprint of a repeatable job (pipeline, command, build)",
+          "properties": [
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-id",
+              "driver": {},
+              "name": "id",
+              "_type": {
+                "name": "bigint",
+                "unsigned": true,
+                "length": 19
+              },
+              "ordinalPosition": 1,
+              "notNull": true,
+              "primaryKey": true,
+              "autoIncrement": true,
+              "unsigned": true,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-project_id",
+              "driver": {},
+              "name": "project_id",
+              "_type": {
+                "name": "bigint",
+                "unsigned": true,
+                "length": 19
+              },
+              "ordinalPosition": 2,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-name",
+              "driver": {},
+              "name": "name",
+              "_type": {
+                "name": "varchar",
+                "length": 255
+              },
+              "ordinalPosition": 3,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-job_type",
+              "driver": {},
+              "name": "job_type",
+              "_type": {
+                "name": "varchar",
+                "length": 50
+              },
+              "ordinalPosition": 4,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-description",
+              "driver": {},
+              "name": "description",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 5,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-payload",
+              "driver": {},
+              "name": "payload",
+              "_type": {
+                "name": "json"
+              },
+              "ordinalPosition": 6,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-schedule",
+              "driver": {},
+              "name": "schedule",
+              "_type": {
+                "name": "varchar",
+                "length": 128
+              },
+              "ordinalPosition": 7,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-is_active",
+              "driver": {},
+              "name": "is_active",
+              "_type": {
+                "name": "tinyint",
+                "unsigned": true,
+                "length": 1
+              },
+              "ordinalPosition": 8,
+              "notNull": true,
+              "autoIncrement": false,
+              "unsigned": true,
+              "readonly": false,
+              "defaultValue": "1"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-created_at",
+              "driver": {},
+              "name": "created_at",
+              "_type": {
+                "name": "timestamp"
+              },
+              "ordinalPosition": 9,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "current_timestamp()"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-updated_at",
+              "driver": {},
+              "name": "updated_at",
+              "_type": {
+                "name": "timestamp"
+              },
+              "ordinalPosition": 10,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "current_timestamp()",
+              "defaultValueOnUpdate": "current_timestamp()"
+            }
+          ],
+          "indexes": [
+            {
+              "type": "PRIMARY_KEY",
+              "name": "primary",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "job_definitions",
+              "properties": [
+                {
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "UNIQUE",
+              "name": "uk_job_definitions_project_name",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "job_definitions",
+              "properties": [
+                {
+                  "columnName": "project_id",
+                  "ordinalPosition": 1
+                },
+                {
+                  "columnName": "name",
+                  "ordinalPosition": 2
+                }
+              ]
+            },
+            {
+              "type": "LINK",
+              "name": "fk_job_definitions_project",
+              "mode": "OUTGOING",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "job_definitions",
+              "referenceSchemaName": "ares_maintenance",
+              "referenceEntityName": "projects",
+              "onDelete": "CASCADE",
+              "onUpdate": "CASCADE",
+              "properties": [
+                {
+                  "columnName": "project_id",
+                  "ordinalPosition": 1
+                }
+              ],
+              "references": [
+                {
+                  "schemaName": "ares_maintenance",
+                  "entityName": "projects",
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "idx_job_definitions_job_type",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "job_definitions",
+              "properties": [
+                {
+                  "columnName": "job_type",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "idx_job_definitions_is_active",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "job_definitions",
+              "properties": [
+                {
+                  "columnName": "is_active",
+                  "ordinalPosition": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "job_runs",
+          "schemaName": "ares_maintenance",
+          "identifier": "ares-core-datasources-EntityDefinition-job_runs",
+          "driver": {},
+          "entityType": "TABLE",
+          "originalDefinedProperties": [],
+          "originalDefinedIndexes": [],
+          "isOnline": true,
+          "description": "Single execution instance of a job (tracking lifecycle: PENDING RUNNING DONE FAILED ROLLED_BACK)",
+          "properties": [
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-id",
+              "driver": {},
+              "name": "id",
+              "_type": {
+                "name": "bigint",
+                "unsigned": true,
+                "length": 19
+              },
+              "ordinalPosition": 1,
+              "notNull": true,
+              "primaryKey": true,
+              "autoIncrement": true,
+              "unsigned": true,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-job_definition_id",
+              "driver": {},
+              "name": "job_definition_id",
+              "_type": {
+                "name": "bigint",
+                "unsigned": true,
+                "length": 19
+              },
+              "ordinalPosition": 2,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-project_id",
+              "driver": {},
+              "name": "project_id",
+              "_type": {
+                "name": "bigint",
+                "unsigned": true,
+                "length": 19
+              },
+              "ordinalPosition": 3,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-name",
+              "driver": {},
+              "name": "name",
+              "_type": {
+                "name": "varchar",
+                "length": 255
+              },
+              "ordinalPosition": 4,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-job_name",
+              "driver": {},
+              "name": "job_name",
+              "_type": {
+                "name": "varchar",
+                "length": 128
+              },
+              "ordinalPosition": 5,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-status",
+              "driver": {},
+              "name": "status",
+              "_type": {
+                "name": "varchar",
+                "length": 32
+              },
+              "ordinalPosition": 6,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "'PENDING'"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-pid",
+              "driver": {},
+              "name": "pid",
+              "_type": {
+                "name": "int",
+                "unsigned": true,
+                "length": 10
+              },
+              "ordinalPosition": 7,
+              "notNull": false,
+              "autoIncrement": false,
+              "unsigned": true,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-execution_mode",
+              "driver": {},
+              "name": "execution_mode",
+              "_type": {
+                "name": "varchar",
+                "length": 32
+              },
+              "ordinalPosition": 8,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "'in-process'"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-project_root",
+              "driver": {},
+              "name": "project_root",
+              "_type": {
+                "name": "varchar",
+                "length": 1024
+              },
+              "ordinalPosition": 9,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-args",
+              "driver": {},
+              "name": "args",
+              "_type": {
+                "name": "json"
+              },
+              "ordinalPosition": 10,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-artifacts_dir",
+              "driver": {},
+              "name": "artifacts_dir",
+              "_type": {
+                "name": "varchar",
+                "length": 1024
+              },
+              "ordinalPosition": 11,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-result",
+              "driver": {},
+              "name": "result",
+              "_type": {
+                "name": "json"
+              },
+              "ordinalPosition": 12,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-exception_message",
+              "driver": {},
+              "name": "exception_message",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 13,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-exception_trace",
+              "driver": {},
+              "name": "exception_trace",
+              "_type": {
+                "name": "longtext"
+              },
+              "ordinalPosition": 14,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-started_at",
+              "driver": {},
+              "name": "started_at",
+              "_type": {
+                "name": "timestamp"
+              },
+              "ordinalPosition": 15,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-completed_at",
+              "driver": {},
+              "name": "completed_at",
+              "_type": {
+                "name": "timestamp"
+              },
+              "ordinalPosition": 16,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-duration_ms",
+              "driver": {},
+              "name": "duration_ms",
+              "_type": {
+                "name": "bigint",
+                "unsigned": true,
+                "length": 19
+              },
+              "ordinalPosition": 17,
+              "notNull": false,
+              "autoIncrement": false,
+              "unsigned": true,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-triggered_by",
+              "driver": {},
+              "name": "triggered_by",
+              "_type": {
+                "name": "varchar",
+                "length": 255
+              },
+              "ordinalPosition": 18,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-created_at",
+              "driver": {},
+              "name": "created_at",
+              "_type": {
+                "name": "timestamp"
+              },
+              "ordinalPosition": 19,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "current_timestamp()"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-updated_at",
+              "driver": {},
+              "name": "updated_at",
+              "_type": {
+                "name": "timestamp"
+              },
+              "ordinalPosition": 20,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "current_timestamp()",
+              "defaultValueOnUpdate": "current_timestamp()"
+            }
+          ],
+          "indexes": [
+            {
+              "type": "PRIMARY_KEY",
+              "name": "primary",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "job_runs",
+              "properties": [
+                {
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "LINK",
+              "name": "fk_job_runs_definition",
+              "mode": "OUTGOING",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "job_runs",
+              "referenceSchemaName": "ares_maintenance",
+              "referenceEntityName": "job_definitions",
+              "onDelete": "SET NULL",
+              "onUpdate": "CASCADE",
+              "properties": [
+                {
+                  "columnName": "job_definition_id",
+                  "ordinalPosition": 1
+                }
+              ],
+              "references": [
+                {
+                  "schemaName": "ares_maintenance",
+                  "entityName": "job_definitions",
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "LINK",
+              "name": "fk_job_runs_project",
+              "mode": "OUTGOING",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "job_runs",
+              "referenceSchemaName": "ares_maintenance",
+              "referenceEntityName": "projects",
+              "onDelete": "SET NULL",
+              "onUpdate": "CASCADE",
+              "properties": [
+                {
+                  "columnName": "project_id",
+                  "ordinalPosition": 1
+                }
+              ],
+              "references": [
+                {
+                  "schemaName": "ares_maintenance",
+                  "entityName": "projects",
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "idx_job_runs_status",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "job_runs",
+              "properties": [
+                {
+                  "columnName": "status",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "idx_job_runs_started_at",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "job_runs",
+              "properties": [
+                {
+                  "columnName": "started_at",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "idx_job_runs_completed_at",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "job_runs",
+              "properties": [
+                {
+                  "columnName": "completed_at",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "idx_job_runs_project_status",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "job_runs",
+              "properties": [
+                {
+                  "columnName": "project_id",
+                  "ordinalPosition": 1
+                },
+                {
+                  "columnName": "status",
+                  "ordinalPosition": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "artifacts",
+          "schemaName": "ares_maintenance",
+          "identifier": "ares-core-datasources-EntityDefinition-artifacts",
+          "driver": {},
+          "entityType": "TABLE",
+          "originalDefinedProperties": [],
+          "originalDefinedIndexes": [],
+          "isOnline": true,
+          "description": "Artifacts (files, archives, build outputs) produced by a job run",
+          "properties": [
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-id",
+              "driver": {},
+              "name": "id",
+              "_type": {
+                "name": "bigint",
+                "unsigned": true,
+                "length": 19
+              },
+              "ordinalPosition": 1,
+              "notNull": true,
+              "primaryKey": true,
+              "autoIncrement": true,
+              "unsigned": true,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-job_run_id",
+              "driver": {},
+              "name": "job_run_id",
+              "_type": {
+                "name": "bigint",
+                "unsigned": true,
+                "length": 19
+              },
+              "ordinalPosition": 2,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-path",
+              "driver": {},
+              "name": "path",
+              "_type": {
+                "name": "varchar",
+                "length": 1024
+              },
+              "ordinalPosition": 3,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-name",
+              "driver": {},
+              "name": "name",
+              "_type": {
+                "name": "varchar",
+                "length": 255
+              },
+              "ordinalPosition": 4,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-kind",
+              "driver": {},
+              "name": "kind",
+              "_type": {
+                "name": "varchar",
+                "length": 50
+              },
+              "ordinalPosition": 5,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "'file'"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-mime_type",
+              "driver": {},
+              "name": "mime_type",
+              "_type": {
+                "name": "varchar",
+                "length": 128
+              },
+              "ordinalPosition": 6,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-bytes",
+              "driver": {},
+              "name": "bytes",
+              "_type": {
+                "name": "bigint",
+                "unsigned": true,
+                "length": 19
+              },
+              "ordinalPosition": 7,
+              "notNull": false,
+              "autoIncrement": false,
+              "unsigned": true,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-checksum",
+              "driver": {},
+              "name": "checksum",
+              "_type": {
+                "name": "varchar",
+                "length": 128
+              },
+              "ordinalPosition": 8,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-storage",
+              "driver": {},
+              "name": "storage",
+              "_type": {
+                "name": "varchar",
+                "length": 32
+              },
+              "ordinalPosition": 9,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "'filesystem'"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-metadata",
+              "driver": {},
+              "name": "metadata",
+              "_type": {
+                "name": "json"
+              },
+              "ordinalPosition": 10,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-created_at",
+              "driver": {},
+              "name": "created_at",
+              "_type": {
+                "name": "timestamp"
+              },
+              "ordinalPosition": 11,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "current_timestamp()"
+            }
+          ],
+          "indexes": [
+            {
+              "type": "PRIMARY_KEY",
+              "name": "primary",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "artifacts",
+              "properties": [
+                {
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "LINK",
+              "name": "fk_artifacts_job_run",
+              "mode": "OUTGOING",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "artifacts",
+              "referenceSchemaName": "ares_maintenance",
+              "referenceEntityName": "job_runs",
+              "onDelete": "CASCADE",
+              "onUpdate": "CASCADE",
+              "properties": [
+                {
+                  "columnName": "job_run_id",
+                  "ordinalPosition": 1
+                }
+              ],
+              "references": [
+                {
+                  "schemaName": "ares_maintenance",
+                  "entityName": "job_runs",
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "idx_artifacts_job_run_id",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "artifacts",
+              "properties": [
+                {
+                  "columnName": "job_run_id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "idx_artifacts_kind",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "artifacts",
+              "properties": [
+                {
+                  "columnName": "kind",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "idx_artifacts_path",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "artifacts",
+              "properties": [
+                {
+                  "columnName": "path",
+                  "ordinalPosition": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "logs",
+          "schemaName": "ares_maintenance",
+          "identifier": "ares-core-datasources-EntityDefinition-logs",
+          "driver": {},
+          "entityType": "TABLE",
+          "originalDefinedProperties": [],
+          "originalDefinedIndexes": [],
+          "isOnline": true,
+          "description": "Log entries produced by a job run (structured, level: info/warn/error)",
+          "properties": [
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-id",
+              "driver": {},
+              "name": "id",
+              "_type": {
+                "name": "bigint",
+                "unsigned": true,
+                "length": 19
+              },
+              "ordinalPosition": 1,
+              "notNull": true,
+              "primaryKey": true,
+              "autoIncrement": true,
+              "unsigned": true,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-job_run_id",
+              "driver": {},
+              "name": "job_run_id",
+              "_type": {
+                "name": "bigint",
+                "unsigned": true,
+                "length": 19
+              },
+              "ordinalPosition": 2,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-task_id",
+              "driver": {},
+              "name": "task_id",
+              "_type": {
+                "name": "bigint",
+                "unsigned": true,
+                "length": 19
+              },
+              "ordinalPosition": 3,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-level",
+              "driver": {},
+              "name": "level",
+              "_type": {
+                "name": "varchar",
+                "length": 16
+              },
+              "ordinalPosition": 4,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "'info'"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-source",
+              "driver": {},
+              "name": "source",
+              "_type": {
+                "name": "varchar",
+                "length": 128
+              },
+              "ordinalPosition": 5,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-message",
+              "driver": {},
+              "name": "message",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 6,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-data",
+              "driver": {},
+              "name": "data",
+              "_type": {
+                "name": "json"
+              },
+              "ordinalPosition": 7,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-timestamp",
+              "driver": {},
+              "name": "timestamp",
+              "_type": {
+                "name": "timestamp"
+              },
+              "ordinalPosition": 8,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "current_timestamp()"
+            }
+          ],
+          "indexes": [
+            {
+              "type": "PRIMARY_KEY",
+              "name": "primary",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "logs",
+              "properties": [
+                {
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "LINK",
+              "name": "fk_logs_job_run",
+              "mode": "OUTGOING",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "logs",
+              "referenceSchemaName": "ares_maintenance",
+              "referenceEntityName": "job_runs",
+              "onDelete": "CASCADE",
+              "onUpdate": "CASCADE",
+              "properties": [
+                {
+                  "columnName": "job_run_id",
+                  "ordinalPosition": 1
+                }
+              ],
+              "references": [
+                {
+                  "schemaName": "ares_maintenance",
+                  "entityName": "job_runs",
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "LINK",
+              "name": "fk_logs_task",
+              "mode": "OUTGOING",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "logs",
+              "referenceSchemaName": "ares_maintenance",
+              "referenceEntityName": "tasks",
+              "onDelete": "SET NULL",
+              "onUpdate": "CASCADE",
+              "properties": [
+                {
+                  "columnName": "task_id",
+                  "ordinalPosition": 1
+                }
+              ],
+              "references": [
+                {
+                  "schemaName": "ares_maintenance",
+                  "entityName": "tasks",
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "idx_logs_job_run_level",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "logs",
+              "properties": [
+                {
+                  "columnName": "job_run_id",
+                  "ordinalPosition": 1
+                },
+                {
+                  "columnName": "level",
+                  "ordinalPosition": 2
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "idx_logs_timestamp",
+              "originalSchema": "ares_maintenance",
+              "originalEntity": "logs",
+              "properties": [
+                {
+                  "columnName": "timestamp",
+                  "ordinalPosition": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

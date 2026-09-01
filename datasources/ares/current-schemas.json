@@ -1,0 +1,1385 @@
+{
+  "timestamp": 1787061932077,
+  "datasource": {
+    "name": "ares",
+    "path": "C:\\Users\\rstef\\workspace\\rs\\aReS\\ecosystem\\datasources\\ares"
+  },
+  "reverseEngineeringCapabilities": {
+    "schemas": true,
+    "entities": true,
+    "properties": true,
+    "indexes": true
+  },
+  "schemaDefinitions": [
+    {
+      "name": "ares",
+      "identifier": "ares-core-datasources-SchemaDefinition-ares",
+      "driver": {},
+      "entities": [
+        {
+          "name": "geo_administrative_areas",
+          "schemaName": "ares",
+          "identifier": "ares-core-datasources-EntityDefinition-geo_administrative_areas",
+          "driver": {},
+          "entityType": "TABLE",
+          "originalDefinedProperties": [],
+          "originalDefinedIndexes": [],
+          "isOnline": true,
+          "properties": [
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-id",
+              "driver": {},
+              "name": "id",
+              "_type": {
+                "name": "bigint",
+                "length": 19
+              },
+              "ordinalPosition": 1,
+              "notNull": true,
+              "autoIncrement": true,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-symbol",
+              "driver": {},
+              "name": "symbol",
+              "_type": {
+                "name": "varchar",
+                "length": 5
+              },
+              "ordinalPosition": 2,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-administrative_region_id",
+              "driver": {},
+              "name": "administrative_region_id",
+              "_type": {
+                "name": "bigint",
+                "length": 19
+              },
+              "ordinalPosition": 3,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-type",
+              "driver": {},
+              "name": "type",
+              "_type": {
+                "name": "varchar",
+                "length": 255
+              },
+              "ordinalPosition": 4,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-name_id",
+              "driver": {},
+              "name": "name_id",
+              "_type": {
+                "name": "bigint",
+                "length": 19
+              },
+              "ordinalPosition": 5,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            }
+          ],
+          "indexes": [
+            {
+              "type": "LINK",
+              "name": "geo_administrative_areas_names_fk",
+              "mode": "OUTGOING",
+              "originalSchema": "ares",
+              "originalEntity": "geo_administrative_areas",
+              "properties": [
+                {
+                  "columnName": "name_id",
+                  "ordinalPosition": 1
+                }
+              ],
+              "referenceSchemaName": "ares",
+              "references": [
+                {
+                  "schemaName": "ares",
+                  "entityName": "i18n_meanings",
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "LINK",
+              "name": "geo_administrative_areas_regions_fk",
+              "mode": "OUTGOING",
+              "originalSchema": "ares",
+              "originalEntity": "geo_administrative_areas",
+              "properties": [
+                {
+                  "columnName": "administrative_region_id",
+                  "ordinalPosition": 1
+                }
+              ],
+              "referenceSchemaName": "ares",
+              "references": [
+                {
+                  "schemaName": "ares",
+                  "entityName": "geo_administrative_regions",
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "PRIMARY_KEY",
+              "name": "primary",
+              "originalSchema": "ares",
+              "originalEntity": "geo_administrative_areas",
+              "properties": [
+                {
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "name_idx",
+              "indexType": "BTREE",
+              "originalSchema": "ares",
+              "originalEntity": "geo_administrative_areas",
+              "properties": [
+                {
+                  "columnName": "name_id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "region_idx",
+              "indexType": "BTREE",
+              "originalSchema": "ares",
+              "originalEntity": "geo_administrative_areas",
+              "properties": [
+                {
+                  "columnName": "administrative_region_id",
+                  "ordinalPosition": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "geo_administrative_regions",
+          "schemaName": "ares",
+          "identifier": "ares-core-datasources-EntityDefinition-geo_administrative_regions",
+          "driver": {},
+          "entityType": "TABLE",
+          "originalDefinedProperties": [],
+          "originalDefinedIndexes": [],
+          "isOnline": true,
+          "properties": [
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-id",
+              "driver": {},
+              "name": "id",
+              "_type": {
+                "name": "bigint",
+                "length": 19
+              },
+              "ordinalPosition": 1,
+              "notNull": true,
+              "autoIncrement": true,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-nation_id",
+              "driver": {},
+              "name": "nation_id",
+              "_type": {
+                "name": "bigint",
+                "length": 19
+              },
+              "ordinalPosition": 2,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-type",
+              "driver": {},
+              "name": "type",
+              "_type": {
+                "name": "varchar",
+                "length": 255
+              },
+              "ordinalPosition": 3,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-name_id",
+              "driver": {},
+              "name": "name_id",
+              "_type": {
+                "name": "bigint",
+                "length": 19
+              },
+              "ordinalPosition": 4,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-has_special_state",
+              "driver": {},
+              "name": "has_special_state",
+              "_type": {
+                "name": "tinyint",
+                "length": 3
+              },
+              "ordinalPosition": 5,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "0"
+            }
+          ],
+          "indexes": [
+            {
+              "type": "LINK",
+              "name": "geo_administrative_regions_names_fk",
+              "mode": "OUTGOING",
+              "originalSchema": "ares",
+              "originalEntity": "geo_administrative_regions",
+              "properties": [
+                {
+                  "columnName": "name_id",
+                  "ordinalPosition": 1
+                }
+              ],
+              "referenceSchemaName": "ares",
+              "references": [
+                {
+                  "schemaName": "ares",
+                  "entityName": "i18n_meanings",
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "LINK",
+              "name": "geo_administrative_regions_nations_fk",
+              "mode": "OUTGOING",
+              "originalSchema": "ares",
+              "originalEntity": "geo_administrative_regions",
+              "properties": [
+                {
+                  "columnName": "nation_id",
+                  "ordinalPosition": 1
+                }
+              ],
+              "referenceSchemaName": "ares",
+              "references": [
+                {
+                  "schemaName": "ares",
+                  "entityName": "geo_nations",
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "PRIMARY_KEY",
+              "name": "primary",
+              "originalSchema": "ares",
+              "originalEntity": "geo_administrative_regions",
+              "properties": [
+                {
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "name_idx",
+              "indexType": "BTREE",
+              "originalSchema": "ares",
+              "originalEntity": "geo_administrative_regions",
+              "properties": [
+                {
+                  "columnName": "name_id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "nation_idx",
+              "indexType": "BTREE",
+              "originalSchema": "ares",
+              "originalEntity": "geo_administrative_regions",
+              "properties": [
+                {
+                  "columnName": "nation_id",
+                  "ordinalPosition": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "geo_cities",
+          "schemaName": "ares",
+          "identifier": "ares-core-datasources-EntityDefinition-geo_cities",
+          "driver": {},
+          "entityType": "TABLE",
+          "originalDefinedProperties": [],
+          "originalDefinedIndexes": [],
+          "isOnline": true,
+          "properties": [
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-id",
+              "driver": {},
+              "name": "id",
+              "_type": {
+                "name": "bigint",
+                "length": 19
+              },
+              "ordinalPosition": 1,
+              "notNull": true,
+              "autoIncrement": true,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-administrative_area_id",
+              "driver": {},
+              "name": "administrative_area_id",
+              "_type": {
+                "name": "bigint",
+                "length": 19
+              },
+              "ordinalPosition": 2,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-postal_codes",
+              "driver": {},
+              "name": "postal_codes",
+              "_type": {
+                "name": "varchar",
+                "length": 255
+              },
+              "ordinalPosition": 3,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-type",
+              "driver": {},
+              "name": "type",
+              "_type": {
+                "name": "varchar",
+                "length": 255
+              },
+              "ordinalPosition": 4,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-name_id",
+              "driver": {},
+              "name": "name_id",
+              "_type": {
+                "name": "bigint",
+                "length": 19
+              },
+              "ordinalPosition": 5,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-latitude",
+              "driver": {},
+              "name": "latitude",
+              "_type": {
+                "name": "float",
+                "length": 12
+              },
+              "ordinalPosition": 6,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-longitude",
+              "driver": {},
+              "name": "longitude",
+              "_type": {
+                "name": "float",
+                "length": 12
+              },
+              "ordinalPosition": 7,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            }
+          ],
+          "indexes": [
+            {
+              "type": "LINK",
+              "name": "geo_cities_administrative_areas_fk",
+              "mode": "OUTGOING",
+              "originalSchema": "ares",
+              "originalEntity": "geo_cities",
+              "properties": [
+                {
+                  "columnName": "administrative_area_id",
+                  "ordinalPosition": 1
+                }
+              ],
+              "referenceSchemaName": "ares",
+              "references": [
+                {
+                  "schemaName": "ares",
+                  "entityName": "geo_administrative_areas",
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "LINK",
+              "name": "geo_cities_names_fk",
+              "mode": "OUTGOING",
+              "originalSchema": "ares",
+              "originalEntity": "geo_cities",
+              "properties": [
+                {
+                  "columnName": "name_id",
+                  "ordinalPosition": 1
+                }
+              ],
+              "referenceSchemaName": "ares",
+              "references": [
+                {
+                  "schemaName": "ares",
+                  "entityName": "i18n_meanings",
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "PRIMARY_KEY",
+              "name": "primary",
+              "originalSchema": "ares",
+              "originalEntity": "geo_cities",
+              "properties": [
+                {
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "administrative_area_idx",
+              "indexType": "BTREE",
+              "originalSchema": "ares",
+              "originalEntity": "geo_cities",
+              "properties": [
+                {
+                  "columnName": "administrative_area_id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "name_idx",
+              "indexType": "BTREE",
+              "originalSchema": "ares",
+              "originalEntity": "geo_cities",
+              "properties": [
+                {
+                  "columnName": "name_id",
+                  "ordinalPosition": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "geo_nations",
+          "schemaName": "ares",
+          "identifier": "ares-core-datasources-EntityDefinition-geo_nations",
+          "driver": {},
+          "entityType": "TABLE",
+          "originalDefinedProperties": [],
+          "originalDefinedIndexes": [],
+          "isOnline": true,
+          "properties": [
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-id",
+              "driver": {},
+              "name": "id",
+              "_type": {
+                "name": "bigint",
+                "length": 19
+              },
+              "ordinalPosition": 1,
+              "notNull": true,
+              "autoIncrement": true,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-iso3166_2_code",
+              "driver": {},
+              "name": "iso3166_2_code",
+              "_type": {
+                "name": "char",
+                "length": 2
+              },
+              "ordinalPosition": 2,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-iso3166_3_code",
+              "driver": {},
+              "name": "iso3166_3_code",
+              "_type": {
+                "name": "char",
+                "length": 3
+              },
+              "ordinalPosition": 3,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-iso3166_numeric_code",
+              "driver": {},
+              "name": "iso3166_numeric_code",
+              "_type": {
+                "name": "int",
+                "length": 10
+              },
+              "ordinalPosition": 4,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-type",
+              "driver": {},
+              "name": "type",
+              "_type": {
+                "name": "enum",
+                "length": 32,
+                "enumeration": [
+                  "sovereign_state",
+                  "partially_recognized_state",
+                  "de_facto_state",
+                  "dependency_or_overseas_territory",
+                  "nation_without_a_state"
+                ]
+              },
+              "ordinalPosition": 5,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-surface_kmq",
+              "driver": {},
+              "name": "surface_kmq",
+              "_type": {
+                "name": "float",
+                "length": 12
+              },
+              "ordinalPosition": 6,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-language",
+              "driver": {},
+              "name": "language",
+              "_type": {
+                "name": "char",
+                "length": 5
+              },
+              "ordinalPosition": 7,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-dependency_id",
+              "driver": {},
+              "name": "dependency_id",
+              "_type": {
+                "name": "bigint",
+                "length": 19
+              },
+              "ordinalPosition": 8,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-name_id",
+              "driver": {},
+              "name": "name_id",
+              "_type": {
+                "name": "bigint",
+                "length": 19
+              },
+              "ordinalPosition": 9,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            }
+          ],
+          "indexes": [
+            {
+              "type": "LINK",
+              "name": "geo_nations_dependencies_fk",
+              "mode": "OUTGOING",
+              "originalSchema": "ares",
+              "originalEntity": "geo_nations",
+              "properties": [
+                {
+                  "columnName": "dependency_id",
+                  "ordinalPosition": 1
+                }
+              ],
+              "referenceSchemaName": "ares",
+              "references": [
+                {
+                  "schemaName": "ares",
+                  "entityName": "geo_nations",
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "LINK",
+              "name": "geo_nations_names_fk",
+              "mode": "OUTGOING",
+              "originalSchema": "ares",
+              "originalEntity": "geo_nations",
+              "properties": [
+                {
+                  "columnName": "name_id",
+                  "ordinalPosition": 1
+                }
+              ],
+              "referenceSchemaName": "ares",
+              "references": [
+                {
+                  "schemaName": "ares",
+                  "entityName": "i18n_meanings",
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "PRIMARY_KEY",
+              "name": "primary",
+              "originalSchema": "ares",
+              "originalEntity": "geo_nations",
+              "properties": [
+                {
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "dependency_idx",
+              "indexType": "BTREE",
+              "originalSchema": "ares",
+              "originalEntity": "geo_nations",
+              "properties": [
+                {
+                  "columnName": "dependency_id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "name_idx",
+              "indexType": "BTREE",
+              "originalSchema": "ares",
+              "originalEntity": "geo_nations",
+              "properties": [
+                {
+                  "columnName": "name_id",
+                  "ordinalPosition": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "i18n_expressions",
+          "schemaName": "ares",
+          "identifier": "ares-core-datasources-EntityDefinition-i18n_expressions",
+          "driver": {},
+          "entityType": "TABLE",
+          "originalDefinedProperties": [],
+          "originalDefinedIndexes": [],
+          "isOnline": true,
+          "properties": [
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-id",
+              "driver": {},
+              "name": "id",
+              "_type": {
+                "name": "bigint",
+                "length": 19
+              },
+              "ordinalPosition": 1,
+              "notNull": true,
+              "autoIncrement": true,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-eng_expression",
+              "driver": {},
+              "name": "eng_expression",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 2,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-ita_expression",
+              "driver": {},
+              "name": "ita_expression",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 3,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-spa_expression",
+              "driver": {},
+              "name": "spa_expression",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 4,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-fra_expression",
+              "driver": {},
+              "name": "fra_expression",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 5,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-deu_expression",
+              "driver": {},
+              "name": "deu_expression",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 6,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-por_expression",
+              "driver": {},
+              "name": "por_expression",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 7,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-rus_expression",
+              "driver": {},
+              "name": "rus_expression",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 8,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-zho_expression",
+              "driver": {},
+              "name": "zho_expression",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 9,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-jpn_expression",
+              "driver": {},
+              "name": "jpn_expression",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 10,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-kor_expression",
+              "driver": {},
+              "name": "kor_expression",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 11,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-ara_expression",
+              "driver": {},
+              "name": "ara_expression",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 12,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-hin_expression",
+              "driver": {},
+              "name": "hin_expression",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 13,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-tur_expression",
+              "driver": {},
+              "name": "tur_expression",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 14,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-nld_expression",
+              "driver": {},
+              "name": "nld_expression",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 15,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-pol_expression",
+              "driver": {},
+              "name": "pol_expression",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 16,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-vie_expression",
+              "driver": {},
+              "name": "vie_expression",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 17,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-tha_expression",
+              "driver": {},
+              "name": "tha_expression",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 18,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-ind_expression",
+              "driver": {},
+              "name": "ind_expression",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 19,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-msa_expression",
+              "driver": {},
+              "name": "msa_expression",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 20,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-fas_expression",
+              "driver": {},
+              "name": "fas_expression",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 21,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-ben_expression",
+              "driver": {},
+              "name": "ben_expression",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 22,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-grammatical_analysis",
+              "driver": {},
+              "name": "grammatical_analysis",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 23,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-logical_analysis",
+              "driver": {},
+              "name": "logical_analysis",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 24,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-tags",
+              "driver": {},
+              "name": "tags",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 25,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            }
+          ],
+          "indexes": [
+            {
+              "type": "PRIMARY_KEY",
+              "name": "primary",
+              "originalSchema": "ares",
+              "originalEntity": "i18n_expressions",
+              "properties": [
+                {
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "i18n_expression_meanings",
+          "schemaName": "ares",
+          "identifier": "ares-core-datasources-EntityDefinition-i18n_expression_meanings",
+          "driver": {},
+          "entityType": "TABLE",
+          "originalDefinedProperties": [],
+          "originalDefinedIndexes": [],
+          "isOnline": true,
+          "properties": [
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-expression_id",
+              "driver": {},
+              "name": "expression_id",
+              "_type": {
+                "name": "bigint",
+                "length": 19
+              },
+              "ordinalPosition": 1,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-meaning_id",
+              "driver": {},
+              "name": "meaning_id",
+              "_type": {
+                "name": "bigint",
+                "length": 19
+              },
+              "ordinalPosition": 2,
+              "notNull": true,
+              "autoIncrement": false,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-case_tags",
+              "driver": {},
+              "name": "case_tags",
+              "_type": {
+                "name": "varchar",
+                "length": 255
+              },
+              "ordinalPosition": 3,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL",
+              "description": "expression use case related to the meaning"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-case_percentage",
+              "driver": {},
+              "name": "case_percentage",
+              "_type": {
+                "name": "decimal",
+                "length": 5,
+                "decimalLength": 2
+              },
+              "ordinalPosition": 4,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL",
+              "description": "expression pertinence in this use case, related to the meaning"
+            }
+          ],
+          "indexes": [
+            {
+              "type": "LINK",
+              "name": "i18n_expression_meanings_expressions_fk",
+              "mode": "OUTGOING",
+              "originalSchema": "ares",
+              "originalEntity": "i18n_expression_meanings",
+              "properties": [
+                {
+                  "columnName": "expression_id",
+                  "ordinalPosition": 1
+                }
+              ],
+              "referenceSchemaName": "ares",
+              "references": [
+                {
+                  "schemaName": "ares",
+                  "entityName": "i18n_expressions",
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "LINK",
+              "name": "i18n_expression_meanings_meanings_fk",
+              "mode": "OUTGOING",
+              "originalSchema": "ares",
+              "originalEntity": "i18n_expression_meanings",
+              "properties": [
+                {
+                  "columnName": "meaning_id",
+                  "ordinalPosition": 1
+                }
+              ],
+              "referenceSchemaName": "ares",
+              "references": [
+                {
+                  "schemaName": "ares",
+                  "entityName": "i18n_meanings",
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "PRIMARY_KEY",
+              "name": "primary",
+              "originalSchema": "ares",
+              "originalEntity": "i18n_expression_meanings",
+              "properties": [
+                {
+                  "columnName": "expression_id",
+                  "ordinalPosition": 1
+                },
+                {
+                  "columnName": "meaning_id",
+                  "ordinalPosition": 2
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "expression_idx",
+              "indexType": "BTREE",
+              "originalSchema": "ares",
+              "originalEntity": "i18n_expression_meanings",
+              "properties": [
+                {
+                  "columnName": "expression_id",
+                  "ordinalPosition": 1
+                }
+              ]
+            },
+            {
+              "type": "INDEX",
+              "name": "meaning_idx",
+              "indexType": "BTREE",
+              "originalSchema": "ares",
+              "originalEntity": "i18n_expression_meanings",
+              "properties": [
+                {
+                  "columnName": "meaning_id",
+                  "ordinalPosition": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "i18n_meanings",
+          "schemaName": "ares",
+          "identifier": "ares-core-datasources-EntityDefinition-i18n_meanings",
+          "driver": {},
+          "entityType": "TABLE",
+          "originalDefinedProperties": [],
+          "originalDefinedIndexes": [],
+          "isOnline": true,
+          "properties": [
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-id",
+              "driver": {},
+              "name": "id",
+              "_type": {
+                "name": "bigint",
+                "length": 19
+              },
+              "ordinalPosition": 1,
+              "notNull": true,
+              "autoIncrement": true,
+              "readonly": false
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-meaning",
+              "driver": {},
+              "name": "meaning",
+              "_type": {
+                "name": "text",
+                "length": 65535
+              },
+              "ordinalPosition": 2,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-tags",
+              "driver": {},
+              "name": "tags",
+              "_type": {
+                "name": "varchar",
+                "length": 255
+              },
+              "ordinalPosition": 3,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-table_name",
+              "driver": {},
+              "name": "table_name",
+              "_type": {
+                "name": "varchar",
+                "length": 255
+              },
+              "ordinalPosition": 4,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            },
+            {
+              "identifier": "ares-core-datasources-PropertyDefinition-table_id",
+              "driver": {},
+              "name": "table_id",
+              "_type": {
+                "name": "varchar",
+                "length": 255
+              },
+              "ordinalPosition": 5,
+              "notNull": false,
+              "autoIncrement": false,
+              "readonly": false,
+              "defaultValue": "NULL"
+            }
+          ],
+          "indexes": [
+            {
+              "type": "PRIMARY_KEY",
+              "name": "primary",
+              "originalSchema": "ares",
+              "originalEntity": "i18n_meanings",
+              "properties": [
+                {
+                  "columnName": "id",
+                  "ordinalPosition": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
